@@ -1,0 +1,25 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+// const express = require("express");
+const express_1 = __importDefault(require("express"));
+const { sequelize } = require("./db/models");
+// const dotenv = require("dotenv");
+const dotenv_1 = __importDefault(require("dotenv"));
+const app = (0, express_1.default)();
+dotenv_1.default.config();
+const PORT = process.env.PORT;
+app.use(express_1.default.json());
+const book = require('./routes/book');
+const copy = require('./routes/copy');
+const loan = require('./routes/loan');
+const member = require('./routes/member');
+const transaction = require('./routes/transaction');
+app.use('/api/books', book);
+app.use('/api/copies', copy);
+app.use('/api/loan', loan);
+app.use('/api/member', member);
+app.use('/api/transaction', transaction);
+exports.default = app;

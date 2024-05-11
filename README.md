@@ -12,22 +12,23 @@ This project is a backend application designed to manage a library's essential o
 
 ## Introduction
 
-The Library Management System is built to manage the core functionalities required for a Library Management System. With this system, libraries can maintain accurate records of their inventory and manage lending activities.
+This Library Management System is built to manage the core functionalities required for a Library Management System. With this system, libraries can maintain accurate records of their inventory and manage lending activities.
 
 ## Features:
 
-Books: Information about the library's books, such as title, author, genre, etc.
-Copies: Details about specific copies of each book, including status and the book it's associated with.
-Loans: Tracks loans to members, with loan and return dates.
-Transactions: Records borrowing and returning events.
-Members: Information about library members, including their personal details such as name, address, contact information other relevant data.
+* Books: Information about the library's books, such as title, author, genre, etc.
+* Copies: Details about specific copies of each book, including status and the book it's associated with.
+* Loans: Tracks loans to members, with loan and return dates.
+* Transactions: Records borrowing and returning events.
+* Members: Information about library members, including their personal details such as name, address, contact information other relevant data.
 
 ## Technologies Used:
 
-Node.js
-Express.js
-MySQL database
-jest for testing endpoints
+* Node.js
+* Express.js
+* MySQL database
+* Typescript for static type-checking
+* jest for testing endpoints
 
 ## .env File Setup:
 
