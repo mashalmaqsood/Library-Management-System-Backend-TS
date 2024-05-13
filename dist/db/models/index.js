@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
+const fs = require("fs");
+const path = require("path");
+const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || "development";
 let config;
 try {
     config = require(__dirname + "/../../db/config/config.js")[env];
@@ -22,11 +22,9 @@ else {
 }
 fs.readdirSync(__dirname)
     .filter((file) => {
-    return (file.indexOf('.') !== 0 &&
+    return (file.indexOf(".") !== 0 &&
         file !== basename &&
-        (file.endsWith('.js') || file.endsWith('.ts')) &&
-        !file.endsWith('.test.js') &&
-        !file.endsWith('.test.ts'));
+        (file.endsWith(".js") || file.endsWith(".ts")));
 })
     .forEach((file) => {
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);

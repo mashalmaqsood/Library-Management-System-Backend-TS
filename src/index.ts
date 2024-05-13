@@ -1,14 +1,9 @@
 import { Express } from "express";
-// const express = require("express");
 import express from "express";
-const { sequelize } = require("./db/models");
-// const dotenv = require("dotenv");
 import dotenv from "dotenv"
 const app : Express = express();
 
 dotenv.config();
-
-const PORT = process.env.PORT;
 app.use(express.json());
 
 const book = require('./routes/book');

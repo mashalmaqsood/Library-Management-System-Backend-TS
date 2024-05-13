@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
+const fs = require("fs");
+const path = require("path");
+const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || "development";
 
 let config: any;
 try {
@@ -12,25 +12,26 @@ try {
 } catch (error) {
   config = require(__dirname + "/../../db/config/config.ts")[env];
 }
-const db : any = {};
+const db: any = {};
 
-let sequelize : any;
+let sequelize: any;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  sequelize = new Sequelize(
+    config.database,
+    config.username,
+    config.password,
+    config
+  );
 }
 
 fs.readdirSync(__dirname)
   .filter((file: string) => {
     return (
-      file.indexOf('.') !== 0 &&
+      file.indexOf(".") !== 0 &&
       file !== basename &&
-      (
-        file.endsWith('.js') || file.endsWith('.ts')
-      ) &&
-      !file.endsWith('.test.js') &&
-      !file.endsWith('.test.ts')
+      (file.endsWith(".js") || file.endsWith(".ts"))
     );
   })
   .forEach((file: any) => {
