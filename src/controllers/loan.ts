@@ -22,17 +22,21 @@ const createLoan = async (req: Request, res: Response) => {
 const updateLoan = async (req : Request, res: Response) => {
   const { id } = req.params;
   try {
+    console.log("working")
     const loan = await Loan.findOne({
       where: { id },
     });
+    // console.log("loan",loan);
     if(!loan){
       return res
       .status(400)
       .json({ message: "There isn't any loan of this id exists." });
     }
-    await Loan.update(req.body, {
+   const loann = await Loan.update(req.body, {
       where: { id },
     });
+    console.log("loannn",loann)
+    
     return res.json({ message: "Loan details updated successfully" });
   } catch (err) {
     return res.json({ message: "Couldn't update loan details." });

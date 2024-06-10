@@ -55,6 +55,7 @@ const updateTransaction = (req, res) => __awaiter(void 0, void 0, void 0, functi
 });
 const getAllTransactions = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log("workinggg");
         const transactions = yield Transaction.findAll();
         return res.json(transactions);
     }

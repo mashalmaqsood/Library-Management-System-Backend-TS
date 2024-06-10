@@ -45,6 +45,7 @@ const updateTransaction = async (req: Request, res: Response) => {
 
 const getAllTransactions = async (req: Request, res: Response) => {
   try {
+    console.log("workinggg")
     const transactions = await Transaction.findAll();
     return res.json(transactions);
   } catch (err) {

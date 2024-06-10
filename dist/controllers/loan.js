@@ -33,17 +33,20 @@ const createLoan = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 const updateLoan = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
+        console.log("working");
         const loan = yield Loan.findOne({
             where: { id },
         });
+        // console.log("loan",loan);
         if (!loan) {
             return res
                 .status(400)
                 .json({ message: "There isn't any loan of this id exists." });
         }
-        yield Loan.update(req.body, {
+        const loann = yield Loan.update(req.body, {
             where: { id },
         });
+        console.log("loannn", loann);
         return res.json({ message: "Loan details updated successfully" });
     }
     catch (err) {

@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 const path = require("path");
@@ -10,7 +19,7 @@ try {
     config = require(__dirname + "/../../db/config/config.js")[env];
 }
 catch (error) {
-    config = require(__dirname + "/../../db/config/config.ts")[env];
+    console.log(error);
 }
 const db = {};
 let sequelize;
@@ -20,6 +29,14 @@ if (config.use_env_variable) {
 else {
     sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
+const syncModels = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield sequelize.sync({ alter: true });
+    }
+    catch (error) {
+        console.log("sequelize sync failed", error);
+    }
+});
 fs.readdirSync(__dirname)
     .filter((file) => {
     return (file.indexOf(".") !== 0 &&
@@ -37,4 +54,5 @@ Object.keys(db).forEach((modelName) => {
 });
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+db.syncModel = syncModels;
 exports.default = db;

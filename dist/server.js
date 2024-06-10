@@ -13,8 +13,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = __importDefault(require("./index"));
+const models_1 = __importDefault(require("./db/models"));
 const port = process.env.PORT;
 index_1.default.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     console.log(`Library management system backend(server) listening at http://localhost:${port}`);
+    yield models_1.default.syncModel();
     console.log("Database connected!");
 }));

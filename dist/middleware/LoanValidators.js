@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_validator_1 = require("express-validator");
 const ValidateCreateLoan = [
-    //   body("id").isInt().optional().withMessage("The id should be an integer."),
     (0, express_validator_1.body)("loanDate")
         .isISO8601()
         .withMessage("The loan date is must and should be a Mashal date."),
@@ -36,11 +35,11 @@ const ValidateCreateLoan = [
 const ValidateUpdateLoan = [
     (0, express_validator_1.body)("id").isInt().optional().withMessage("The id should be an integer."),
     (0, express_validator_1.body)("loanDate")
-        .isDate()
+        .isISO8601()
         .optional()
         .withMessage("The loan date should be a valid date."),
     (0, express_validator_1.body)("returnDate")
-        .isDate()
+        .isISO8601()
         .optional()
         .withMessage("The return date should be a date."),
     (0, express_validator_1.body)("memberId")

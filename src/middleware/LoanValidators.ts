@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express";
 import { body, param, validationResult } from "express-validator"
 
 const ValidateCreateLoan = [
-//   body("id").isInt().optional().withMessage("The id should be an integer."),
   body("loanDate")
   .isISO8601()
     .withMessage("The loan date is must and should be a Mashal date."),
@@ -37,11 +36,11 @@ const ValidateCreateLoan = [
 const ValidateUpdateLoan = [
   body("id").isInt().optional().withMessage("The id should be an integer."),
   body("loanDate")
-    .isDate()
+  .isISO8601()
     .optional()
     .withMessage("The loan date should be a valid date."),
   body("returnDate")
-    .isDate()
+  .isISO8601()
     .optional()
     .withMessage("The return date should be a date."),
   body("memberId")
@@ -52,6 +51,7 @@ const ValidateUpdateLoan = [
     .isInt()
     .optional()
     .withMessage("The copy Id should be an integer."),
+
   body("createdAt")
     .isDate()
     .optional()

@@ -10,8 +10,9 @@ let config: any;
 try {
   config = require(__dirname + "/../../db/config/config.js")[env];
 } catch (error) {
-  config = require(__dirname + "/../../db/config/config.ts")[env];
+  console.log(error)
 }
+
 const db: any = {};
 
 let sequelize: any;
@@ -26,6 +27,13 @@ if (config.use_env_variable) {
   );
 }
 
+const syncModels = async () => {
+  try{
+await sequelize.sync({alter : true})
+  }catch(error){
+console.log("sequelize sync failed",error)
+  }
+}
 fs.readdirSync(__dirname)
   .filter((file: string) => {
     return (
@@ -50,4 +58,5 @@ Object.keys(db).forEach((modelName) => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+db.syncModel = syncModels;
 export default db;

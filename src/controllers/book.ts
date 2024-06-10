@@ -47,6 +47,7 @@ const updateBook = async (req:Request, res: Response) => {
 
 const getAllBooks = async (req: Request, res: Response) => {
   try {
+
     const books = await Book.findAll();
     return res.json(books);
   } catch (err) {
